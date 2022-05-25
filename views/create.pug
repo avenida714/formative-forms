@@ -1,0 +1,22 @@
+extends layout.pug
+block content
+    h1 Hello, Create a Post Here
+    //- if errors.length
+    //-     each err in errors
+    //-         p= err
+    form(action="/create" method="post") 
+        input(type="hidden" name="_csrf" value=csrfToken)
+        label First Name
+        input(type="text" name="firstName")
+        label Last Name
+        input(type="text" name="lastName") 
+        label E-Mail
+        input(type="email" name="email")
+        label Password
+        input(type="password" name="password")
+        label Confirm your Password
+        input(type="password" name="confirmedPassword")
+        label Create New User
+        input(type="submit" name="submit" value="Create User")
+        
+
