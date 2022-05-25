@@ -22,24 +22,26 @@ app.get("/", (req, res) => {
   res.render('index', { users });
 });
 
-app.get('/create', (req, res) => {
-  res.render('create', {})
-});
+// app.get('/create', (req, res) => {
+//   res.render('create', {})
+// });
 
-app.get('/new', csrfProtection, (req, res) => {
-  res.render('create-post', {csrfToken: req.csrfToken(), errors: [], data: {}})
+app.get('/create', csrfProtection, (req, res) => {
+  res.render('create', {csrfToken: req.csrfToken(), errors: [], data: {}})
 });
 
 app.post('/create', errorArray, csrfProtection, (req, res) => {
-  res.render('create-post', {})
+  // res.render('create', {})
   users.push({
     id: users.length + 1,
-    firstName,
-    lastName,
-    email,
-    password,
-    confirmedPassword
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: req.body.password,
+    confirmedPassword: req.body.confirmedPassword
   })
+
+  res.redirect("/");
 });
 
 

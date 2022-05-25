@@ -14,10 +14,10 @@ block content
             tbody
                 each user in users
                     tr
-                        td 1
-                        td Jill
-                        td Jack
-                        td jill.jack@gmail.com
+                        td= user.id
+                        td= user.firstName
+                        td= user.lastName
+                        td= user.email
                         td
                         td
                         td
